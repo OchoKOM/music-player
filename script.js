@@ -149,7 +149,11 @@ function playpauseTrack(){
     isPlaying ? pauseTrack() : playTrack();
 }
 function playTrack(){
-    curr_track.play();
+    curr_track.play().requestFullscreen().then(function() { 
+       // Votre code ici ⛶ 
+     }).catch(function() { 
+       // Votre code ici ⛶ 
+     });;
     isPlaying = true;
     track_img.querySelector('img').classList.add('rotate');
     wave.classList.add('loader');
