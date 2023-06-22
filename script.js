@@ -221,7 +221,8 @@ autoScroll(track_name);
 autoScroll(track_artist);
 
 volume_slider.onmousemove = setVolume;
-seek.addEventListener("click", seekTo)
+seek.addEventListener("touchstart",init,true);
+seek.addEventListener("click", seekTo);
 seek.addEventListener("mousedown",()=>{
     seek.addEventListener("mousemove", seekTo)
     document.addEventListener("mouseup",()=>{
