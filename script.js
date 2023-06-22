@@ -149,7 +149,7 @@ function playpauseTrack(){
     isPlaying ? pauseTrack() : playTrack();
 }
 function playTrack(){
-    curr_track.play().requestFullscreen().then(function() { 
+    curr_track.play().then(function() { 
        // Votre code ici ⛶ 
      }).catch(function() { 
        // Votre code ici ⛶ 
