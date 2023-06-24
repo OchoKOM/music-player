@@ -213,9 +213,10 @@ function autoScroll(el) {
 autoScroll(track_name);
 autoScroll(track_artist);
 
-volume_slider.onmousemove = () => {
+volume_slider.addEventListener("touchstart", init, true);
+volume_slider.addEventListener("mousemove",  () => {
     curr_track.volume = volume_slider.value / 100;
-}
+});
 seek.addEventListener("touchstart", init, true);
 seek.addEventListener("click", seekTo);
 seek.addEventListener("mousedown", () => {
