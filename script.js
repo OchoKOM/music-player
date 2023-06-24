@@ -83,7 +83,7 @@ loadTrack(track_index);
 function loadTrack(track_index) {
     clearInterval(updateTimer);
     reset();
-    curr_track.autoplay = true
+    curr_track.autoplay;
     curr_track.src = music_list[track_index].music;
     curr_track.load();
 
@@ -93,11 +93,17 @@ function loadTrack(track_index) {
     now_playing.textContent = "Playing music " + (track_index + 1) + " of " + music_list.length;
 
     curr_track.addEventListener("play", playTrack)
-    curr_track.addEventListener("pause", pauseTrack)
     curr_track.addEventListener("timeupdate", setUpdate)
     curr_track.addEventListener('ended', nextTrack);
     random_bg_color();
 }
+curr_track.addEventListener("pause", pauseTrack)
+curr_track.addEventListener("waiting", () => {
+    playpause_btn.classList.add("pending");
+})
+curr_track.addEventListener("canplay", () => {
+    playpause_btn.classList.remove("pending");
+})
 
 function random_bg_color() {
     let hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e'];
