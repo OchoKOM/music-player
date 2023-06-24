@@ -120,6 +120,7 @@ body {
     font-weight: 600;
     white-space: nowrap;
     overflow-x: scroll;
+    pointer-events: none;
 }
 
 .track-artist {
@@ -127,6 +128,7 @@ body {
     font-size: 0.9em;
     white-space: nowrap;
     overflow-x: scroll;
+    pointer-events: none;
 }
 
 .buttons {
@@ -139,10 +141,41 @@ body {
     transition: 100ms;
 }
 .buttons .btn,.buttons .btn.disabled:hover{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     opacity: 1;
 }
-.buttons .btn.disabled{
+.buttons .btn::before,
+.buttons .btn::after{
+    content: '';
+    position: absolute;
+    border: 0px solid;
+    width: calc(100% - 13px);
+    height: calc(100% - 13px);
+    border-radius: 50%;
+    transition: 0.2s ease-out;
+    animation: rotate 5s linear infinite;
+}
+.buttons .btn.pending{
+    pointer-events: none;
+}
+.buttons .btn.pending::before,
+.buttons .btn.pending::after{
+    transition: 0.2s ease-in-out;
+}
+.buttons .btn.pending::before{
+    border-top: 5px solid #f00;
+    border-right: 5px solid transparent;
+    animation: rotate 5s linear infinite;
+}
+.buttons .btn.pending::after{
+    border-bottom: 5px solid #008cff;
+    border-left: 5px solid transparent;
+}
+.buttons .btn.disabled,.buttons .btn.pending svg{
     opacity: 0.3;
 }
 .slider-container {
